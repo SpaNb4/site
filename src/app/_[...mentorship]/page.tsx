@@ -26,15 +26,16 @@ Promise<{ mentorship: (MentorshipDefaultRouteKeys | MentorshipCourseRouteKeys)[]
   ];
 }
 
-type PageParams = Promise<{
+type PageParams = {
   mentorship: (MentorshipDefaultRouteKeys | MentorshipCourseRouteKeys)[];
-}>;
+};
 
-export default async function MentorshipRoute(props: { params: PageParams }) {
-  const { mentorship } = await props.params;
+export default async function MentorshipRoute({ params }: { params: PageParams }) {
+  const { mentorship } = params;
 
   const mentorshipCourse = mentorshipCourses.find((item) =>
-    item.detailsUrl.includes(`/${mentorship[0]}/${mentorship[1]}`)) || mentorshipCoursesDefault;
+    item.detailsUrl.includes(`/${mentorship[0]}/${mentorship[1]}`))
+  || mentorshipCoursesDefault;
 
   return <Mentorship mentorshipData={mentorshipCourse} />;
 }
