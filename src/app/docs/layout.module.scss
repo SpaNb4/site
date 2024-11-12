@@ -1,30 +1,19 @@
-/* Ensure all styles are scoped correctly */
 .container {
-  display: flex; /* Use flexbox for layout */
-  gap: 2rem; /* Space between the menu and content */
-  padding: 2rem; /* Padding around the entire container */
+  display: flex;
+  max-width: 1440px;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .menu {
-  flex: 1; /* Allow the menu to take up 1 part of the flex container */
-  min-width: 250px; /* Set a minimum width for the menu */
-  background-color: #f9f9f9; /* Light background for contrast */
-  padding: 1.5rem; /* Padding inside the menu */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-
-  /* Use nested selectors for local styles */
-  h2 {
-    font-size: 1.5rem; /* Title size in the menu */
-    margin-bottom: 1rem; /* Space below the title */
-    color: #333; /* Dark text color */
-  }
+  min-width: 350px;
+  padding: 1.5rem;
 }
 
 .content {
-  flex: 2; /* Allow the content to take up 2 parts of the flex container */
-  background-color: #fff; /* White background for the content */
-  padding: 1.5rem; /* Padding inside the content */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 2.5rem;
 }

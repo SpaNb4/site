@@ -35,6 +35,10 @@ const navLinks = [
     href: `/${ROUTES.MENTORSHIP}`,
     dropdownInner: <SchoolMenu heading="mentorship" color="dark" hasTitle={false} />,
   },
+  {
+    label: 'Docs',
+    href: `/${ROUTES.DOCS}`,
+  },
 ];
 
 export const Header = () => {

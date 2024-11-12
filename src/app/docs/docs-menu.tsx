@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import styles from './docs-menu.module.scss'; // Import the SCSS module
+import styles from './docs-menu.module.scss';
 
 interface DocLink {
   title: string;
@@ -12,7 +12,7 @@ interface DocLink {
 
 interface Doc {
   title: string;
-  items?: DocLink[]; // Optional nested links
+  items?: DocLink[];
 }
 
 interface DocsMenuProps {
@@ -21,7 +21,7 @@ interface DocsMenuProps {
 
 const DocsMenu = ({ docs }: DocsMenuProps) => {
   const pathname = usePathname();
-  const isActive = (link: string) => pathname === link || pathname.includes(link);
+  const isActive = (link: string) => pathname.endsWith(link);
 
   const renderMenuItems = (items: Doc[]) => {
     return (
@@ -33,20 +33,13 @@ const DocsMenu = ({ docs }: DocsMenuProps) => {
               <ul>
                 {doc.items.map((subDoc, subIndex) => {
                   return (
-                    <li key={subIndex} className={isActive(subDoc.link) ? styles.active : ''}>
-                      {subDoc.link
-                        ? (
-                            <Link href={`/docs/${subDoc.link}`}>
-                              {subDoc.title}
-                            </Link>
-                          )
-                        : (
-                            <span>
-                              {subDoc.title}
-                              {' '}
-                              (Link not defined)
-                            </span>
-                          )}
+                    <li key={subIndex}>
+                      <Link
+                        href={`/docs/${subDoc.link}`}
+                        className={isActive(subDoc.link) ? styles.active : ''}
+                      >
+                        {subDoc.title}
+                      </Link>
                     </li>
                   );
                 })}
@@ -58,12 +51,7 @@ const DocsMenu = ({ docs }: DocsMenuProps) => {
     );
   };
 
-  return (
-    <nav className={styles.menu}>
-      <h2>Documentation</h2>
-      {renderMenuItems(docs)}
-    </nav>
-  );
+  return <nav className={styles.menu}>{renderMenuItems(docs)}</nav>;
 };
 
 export default DocsMenu;

@@ -59,10 +59,7 @@ export default async function DocsIndex({ children }) {
       <div className={styles.menu}>
         <DocsMenu docs={docs} />
       </div>
-      <div className={styles.content}>
-        <h1>Documentation</h1>
-        {children}
-      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 }
