@@ -1,30 +1,46 @@
-import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
+import files from './data.json';
+
+async function fetchDocs() {
+  // Fetch the content for index.md
+  const indexDoc = files.find((doc) => doc.slug === 'README');
+  let indexContent = '';
+
+  if (indexDoc) {
+    const indexRes = await fetch(
+      `https://raw.githubusercontent.com/spanb4/docs/master/docs/${indexDoc.slug}.md`,
+    );
+
+    if (indexRes.ok) {
+      indexContent = await indexRes.text();
+    }
+  }
+
+  return { indexContent };
+}
 
 export default async function DocsIndex() {
-  // Fetch the list of available documentation files
-  const res = await fetch('https://api.github.com/repos/spanb4/docs/contents/docs');
-  const files = await res.json();
-
-  // Filter and map the markdown files
-  const docs = files
-    .filter((file) => file.name.endsWith('.md'))
-    .map((file) => ({
-      slug: file.name.replace('.md', ''),
-      title: file.name.replace('.md', '').replace(/-/g, ' '),
-    }));
+  const { indexContent } = await fetchDocs();
 
   return (
-    <div>
-      <h1>Documentation</h1>
-      <nav>
-        <ul>
-          {docs.map((doc) => (
-            <li key={doc.slug}>
-              <Link href={`/docs/${doc.slug}`}>{doc.title}</Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+    <div
+      className="markdown-body"
+      style={{
+        maxWidth: 1200,
+        margin: 'auto',
+        textAlign: 'left',
+      }}
+    >
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkToc]} // Use the remark-gfm plugin
+        rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings]}
+      >
+        {indexContent}
+      </ReactMarkdown>
     </div>
   );
 }

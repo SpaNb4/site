@@ -1,19 +1,24 @@
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm'; // For GitHub Flavored Markdown
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
+import remarkToc from 'remark-toc';
+import files from '../data.json';
+
 
 export async function generateStaticParams() {
   // Fetch the list of available documentation files
-  const res = await fetch('https://api.github.com/repos/spanb4/docs/contents/docs');
-  const files = await res.json();
-
+  // const res = await fetch('https://api.github.com/repos/spanb4/docs/contents/docs');
+  // const files = await res.json();
+  // console.log(files)
   return files
     .filter((file) => file.name.endsWith('.md'))
     .map((file) => ({ slug: file.name.replace('.md', '') }));
 }
 
 export default async function DocPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+  const { slug } = await params;
   const fileUrl = `https://raw.githubusercontent.com/spanb4/docs/master/docs/${slug}.md`;
 
   try {
@@ -36,7 +41,8 @@ export default async function DocPage({ params }: { params: { slug: string } }) 
         <h1>{slug.replace(/-/g, ' ')}</h1>
         <ReactMarkdown
           children={markdownContent}
-          remarkPlugins={[remarkGfm]} // Use the remark-gfm plugin
+          remarkPlugins={[remarkGfm, remarkToc]} // Use the remark-gfm plugin
+          rehypePlugins={[rehypeSlug, rehypeAutolinkHeadings]}
         />
       </div>
     );

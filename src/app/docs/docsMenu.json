@@ -1,0 +1,113 @@
+[
+  {
+    "title": "RS School. Общая информация",
+    "items": [
+      {
+        "title": "README",
+        "link": "README"
+      }
+    ]
+  },
+  {
+    "title": "Курсы",
+    "items": [
+      {
+        "title": "JavaScript Preschool (Stage 0)",
+        "link": "https://rs.school/courses/javascript-preschool-ru"
+      },
+      {
+        "title": "JavaScript/Front-end Course (Stage 1-2)",
+        "link": "js-fe-course.md",
+        "items": [
+          {
+            "title": "JavaScript/Front-end Course RU",
+            "link": "https://rs.school/courses/javascript-ru"
+          },
+          {
+            "title": "JavaScript/Front-end Course EN",
+            "link": "https://rs.school/courses/javascript"
+          }
+        ]
+      },
+      {
+        "title": "Framework (Stage 3)",
+        "items": [
+          {
+            "title": "React Course",
+            "link": "https://rs.school/courses/reactjs"
+          },
+          {
+            "title": "Angular Course",
+            "link": "https://rs.school/courses/angular"
+          }
+        ]
+      },
+      {
+        "title": "NodeJS Course",
+        "link": "https://rs.school/courses/nodejs"
+      },
+      {
+        "title": "AWS Fundamentals Course",
+        "link": "https://rs.school/courses/aws-fundamentals"
+      },
+      {
+        "title": "AWS Cloud Developer Course",
+        "link": "https://rs.school/courses/aws-cloud-developer"
+      },
+      {
+        "title": "AWS DevOps Course",
+        "link": "https://rs.school/courses/aws-devops"
+      }
+    ]
+  },
+  {
+    "title": "Процесс обучения",
+    "items": [
+      {
+        "title": "Общение. Каналы связи",
+        "link": "rs-school-chats"
+      },
+      {
+        "title": "Нормы поведения",
+        "link": "code-of-conduct"
+      },
+      {
+        "title": "Отчисление",
+        "link": "dismission"
+      },
+      {
+        "title": "Сертификат",
+        "link": "rs-school-certificate"
+      }
+    ]
+  },
+  {
+    "title": "Платформа RS APP",
+    "items": [
+      {
+        "title": "Описание",
+        "link": "rs-app"
+      },
+      {
+        "title": "Расписание",
+        "link": "rs-app-schedule"
+      },
+      {
+        "title": "Сдача заданий в RS APP",
+        "link": "rs-app-tasks"
+      },
+      {
+        "title": "Cross-check",
+        "link": "cross-check-flow"
+      },
+      {
+        "title": "Нотификации",
+        "link": "notifications"
+      },
+      {
+        "title": "Типичные проблемы",
+        "link": "rs-app-issues"
+      }
+    ]
+  }
+]
