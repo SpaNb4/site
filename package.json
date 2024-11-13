@@ -17,7 +17,8 @@
     "test:visual": "npx percy exec -- npm run test:playwright",
     "coverage": "vitest run --coverage",
     "precommit": "npx lint-staged",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postbuild": "pagefind --site .next/server/app --output-path .next/static/chunks/pagefind"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -74,6 +75,7 @@
     "husky": "^9.1.5",
     "jsdom": "^25.0.0",
     "lint-staged": "^15.2.10",
+    "pagefind": "^1.2.0",
     "prettier": "^3.3.3",
     "sass": "^1.80.6",
     "stylelint": "^16.9.0",

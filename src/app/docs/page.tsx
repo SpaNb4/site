@@ -3,16 +3,15 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
-import files from './data.json';
 
 async function fetchDocs() {
-  // Fetch the content for index.md
-  const indexDoc = files.find((doc) => doc.slug === 'README');
+  const indexDoc = 'README';
+
   let indexContent = '';
 
   if (indexDoc) {
     const indexRes = await fetch(
-      `https://raw.githubusercontent.com/spanb4/docs/master/docs/${indexDoc.slug}.md`,
+      `https://raw.githubusercontent.com/spanb4/docs/master/docs/${indexDoc}.md`,
     );
 
     if (indexRes.ok) {
