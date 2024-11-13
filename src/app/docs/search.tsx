@@ -20,7 +20,20 @@ export default function Search() {
           );
         } catch (e) {
           // @ts-ignore
-          window.pagefind = { search: () => ({ results: [123] }) };
+          window.pagefind = {
+            search: () => ({
+              results: [
+                {
+                  id: 'dummy-id',
+                  data: async () => ({
+                    url: '/dummy-url',
+                    meta: { title: 'dummy title' },
+                    excerpt: 'dummy excerpt',
+                  }),
+                },
+              ],
+            }),
+          };
         }
       }
     }
