@@ -18,6 +18,11 @@ export default function Search() {
             // eslint-disable-next-line import/no-unresolved
             /* webpackIgnore: true */ '/_next/static/pagefind/pagefind.js'
           );
+          // @ts-expect-error
+          await window.pagefind.options({
+            baseUrl: '/docs',
+            // ... more search options
+          });
         } catch (e) {
           // @ts-ignore
           window.pagefind = {
