@@ -9,14 +9,17 @@ export default function Search() {
 
   React.useEffect(() => {
     async function loadPagefind() {
+      // @ts-ignore
       if (typeof window.pagefind === 'undefined') {
         try {
+          // @ts-ignore
           window.pagefind = await import(
             // @ts-expect-error pagefind.js generated after build
             // eslint-disable-next-line import/no-unresolved
             /* webpackIgnore: true */ './pagefind/pagefind.js'
           );
         } catch (e) {
+          // @ts-ignore
           window.pagefind = { search: () => ({ results: [123] }) };
         }
       }
@@ -25,7 +28,9 @@ export default function Search() {
   }, []);
 
   async function handleSearch() {
+    // @ts-ignore
     if (window.pagefind) {
+      // @ts-ignore
       const search = await window.pagefind.search(query);
 
       setResults(search.results);
@@ -42,14 +47,15 @@ export default function Search() {
         onInput={handleSearch}
       />
       <div id="results">
-        {results.map((result, index) => (
+        {results.map((result) => (
+          // @ts-ignore
           <Result key={result.id} result={result} />
         ))}
       </div>
     </div>
   );
 }
-
+// @ts-ignore
 function Result({ result }) {
   const [data, setData] = useState(null);
 
@@ -67,8 +73,11 @@ function Result({ result }) {
   }
 
   return (
+    // @ts-ignore
     <Link href={data.url}>
+      {/* @ts-ignore */}
       <h3>{data.meta.title}</h3>
+      {/* @ts-ignore */}
       <p>{data.excerpt}</p>
     </Link>
   );
