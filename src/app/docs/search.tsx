@@ -16,7 +16,7 @@ export default function Search() {
           window.pagefind = await import(
             // @ts-expect-error pagefind.js generated after build
             // eslint-disable-next-line import/no-unresolved
-            /* webpackIgnore: true */ './pagefind/pagefind.js'
+            /* webpackIgnore: true */ '/_next/static/pagefind/pagefind.js'
           );
         } catch (e) {
           // @ts-ignore
