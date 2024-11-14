@@ -20,7 +20,7 @@ export default function Search() {
           );
           // @ts-expect-error
           await window.pagefind.options({
-            baseUrl: '/docs',
+            baseUrl: '/',
             // ... more search options
           });
         } catch (e) {
