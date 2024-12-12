@@ -46,11 +46,6 @@ jobs:
       - name: Install Playwright browsers and dependencies
         run: npx playwright install --with-deps
 
-      - name: Get the base commit
-        run: |
-          git fetch origin ${{ steps.get_pr.outputs.base_branch }}
-          git checkout ${{ steps.get_pr.outputs.base_commit }}
-
       - name: Run Playwright tests
         run: npm run test:playwright
         env:
@@ -59,7 +54,3 @@ jobs:
           API_URL: ${{ secrets.API_URL }}
           REFERENCE_BRANCH: ${{ steps.get_pr.outputs.head_ref }}
           REFERENCE_COMMIT: ${{ steps.get_pr.outputs.head_sha }}
-
-      - name: Switch back to the original branch
-        if: always()
-        run: git switch ${{ steps.get_pr.outputs.head_ref }}
