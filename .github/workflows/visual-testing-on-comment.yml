@@ -42,7 +42,6 @@ jobs:
           echo "Head branch: ${{ steps.get_pr.outputs.head_ref }}"
           echo "Head commit: ${{ steps.get_pr.outputs.head_sha }}"
 
-
       - name: Install Playwright browsers and dependencies
         run: npx playwright install --with-deps
 
@@ -52,5 +51,5 @@ jobs:
           ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_URL: ${{ secrets.API_URL }}
-          REFERENCE_BRANCH: ${{ steps.get_pr.outputs.head_ref }}
-          REFERENCE_COMMIT: ${{ steps.get_pr.outputs.head_sha }}
+          ARGOS_BRANCH: ${{ steps.get_pr.outputs.head_ref }} # Set Argos Branch to the PR branch name
+          ARGOS_COMMIT: ${{ steps.get_pr.outputs.head_sha }} # Set Argos Commit to the PR commit SHA
