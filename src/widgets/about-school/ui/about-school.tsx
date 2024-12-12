@@ -13,7 +13,7 @@ export const AboutSchool = () => {
       <article className={cx('content')}>
         <WidgetTitle mods="asterisk">About RS School</WidgetTitle>
         <Paragraph fontSize="large">
-          TESTING SCREENSHOTS 77777777777 No matter your age, professional employment, or place of residence.
+          TESTING SCREENSHOTS 8888888888888 No matter your age, professional employment, or place of residence.
         </Paragraph>
         <Paragraph>
           RS School offers a unique learning experience as a&#160;free, community-based online
