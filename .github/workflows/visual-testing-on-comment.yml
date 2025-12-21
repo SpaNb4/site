@@ -48,8 +48,6 @@ jobs:
       - name: Run Playwright tests
         run: npm run test:playwright
         env:
-          ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_URL: ${{ secrets.API_URL }}
           ARGOS_BRANCH: ${{ steps.get_pr.outputs.head_ref }} # Set Argos Branch to the PR branch name
           ARGOS_COMMIT: ${{ steps.get_pr.outputs.head_sha }} # Set Argos Commit to the PR commit SHA

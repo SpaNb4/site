@@ -7,7 +7,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    process.env.CI ? ['dot'] : ['html', { outputFolder: 'src/shared/__tests__/report' }],
+    process.env.CI ? ['dot'] : ['list'],
     ['@argos-ci/playwright/reporter', { uploadToArgos: !!process.env.CI }],
   ],
   use: {

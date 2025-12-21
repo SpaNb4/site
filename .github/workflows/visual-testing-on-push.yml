@@ -25,6 +25,4 @@ jobs:
 
       - run: npm run test:playwright
         env:
-          ARGOS_TOKEN: ${{ secrets.ARGOS_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           API_URL: ${{ secrets.API_URL }}

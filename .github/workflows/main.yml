@@ -34,6 +34,13 @@ jobs:
       - name: Run application tests
         run: npm run test
 
+      - name: Install Playwright browsers and dependencies
+        run: npx playwright install --with-deps
+
+      - run: npm run test:playwright
+        env:
+          API_URL: ${{ secrets.API_URL }}
+
       - name: Build
         run: npm run build
         env:
