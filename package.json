@@ -32,7 +32,7 @@
     "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
-    "@argos-ci/playwright": "^3.9.4",
+    "@argos-ci/playwright": "^6.3.8",
     "@feature-sliced/eslint-config": "^0.1.1",
     "@playwright/test": "^1.49.0",
     "@stylistic/eslint-plugin": "^2.11.0",
